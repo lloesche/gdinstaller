@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Btn_V13.png" type="Texture" id=1]
+[ext_resource path="res://Main.gd" type="Script" id=2]
+[ext_resource path="res://bg.png" type="Texture" id=3]
+[ext_resource path="res://BtnExitOpacity.png" type="Texture" id=4]
+[ext_resource path="res://BtnExitNoOpacity.png" type="Texture" id=5]
+[ext_resource path="res://Btn_V18.png" type="Texture" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 404, 281 )
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="bg" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 399, 276 )
+shape = SubResource( 1 )
+
+[node name="BtnInstall" type="TouchScreenButton" parent="."]
+position = Vector2( 281, 472 )
+normal = ExtResource( 1 )
+pressed = ExtResource( 6 )
+
+[node name="LabelResults" type="Label" parent="."]
+margin_left = 36.0
+margin_top = 100.0
+margin_right = 768.0
+margin_bottom = 354.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+margin_left = 165.0
+margin_top = 438.0
+margin_right = 649.0
+margin_bottom = 464.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnExit" type="TouchScreenButton" parent="."]
+position = Vector2( 744, 6 )
+normal = ExtResource( 4 )
+pressed = ExtResource( 5 )
+action = "ui_quit"
+
+[node name="LabelInstall" type="Label" parent="."]
+margin_left = 384.0
+margin_top = 494.0
+margin_right = 521.0
+margin_bottom = 508.0
+text = "Install"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelHead" type="Label" parent="."]
+margin_left = 335.0
+margin_top = 27.0
+margin_right = 472.0
+margin_bottom = 41.0
+text = "Cloudkeeper Installer"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
+[connection signal="released" from="BtnInstall" to="." method="_on_BtnInstall_released"]
